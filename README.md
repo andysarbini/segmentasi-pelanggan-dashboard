@@ -9,6 +9,7 @@ PT Finansia Mobilindo adalah perusahaan fiktif bergerak dibidang pembiayaan kend
 - Menentukan kelompok pelanggan potensial untuk program promo kredit ringan.
 - Menemukan pelanggan yang berisiko gagal bayar untuk diberikan penanganan khusus.
 - Menyusun strategi retensi pelanggan.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 🎯 Mengapa perlu menggunakan StandardScaler()?
 ✅ 1. Agar semua fitur berada pada skala yang sama
@@ -125,6 +126,37 @@ Gunakan StandardScaler jika:
 | ------------------ | ----------------------------------------------------------------------------------------- |
 | `StandardScaler()` | Menstandarisasi fitur: membuat **mean = 0** dan **standar deviasi = 1**                   |
 | `PCA`              | Mengubah data berdimensi tinggi → ke dimensi lebih rendah (dengan **maksimal informasi**) |
+
+📌 Apa itu PCA secara singkat?
+PCA (Principal Component Analysis) adalah teknik reduksi dimensi. Tujuannya adalah:
+- Mengubah data berdimensi tinggi (banyak fitur) menjadi lebih sedikit dimensi (biasanya 2 atau 3) tanpa kehilangan terlalu banyak informasi.
+- PCA mencari kombinasi linier dari fitur asli yang memaksimalkan variasi (informasi) dalam data.
+
+🎯 Maksud dari sumbu X dan Y pada plot PCA
+Pada plot PCA 2D, seperti yang Anda tampilkan:
+  - Sumbu X = Principal Component 1 (PC1)
+    → Ini adalah kombinasi linier dari fitur-fitur asli yang menangkap variasi terbesar dalam data.
+    Bisa dikatakan, ini adalah "arah" utama di mana data paling bervariasi.  
+  - Sumbu Y = Principal Component 2 (PC2)
+    → Ini adalah kombinasi linier lain yang ortogonal (tegak lurus) terhadap PC1, dan menangkap variasi terbanyak berikutnya.
+
+📈 Contoh Interpretasi Visual:
+Misal Anda memetakan pelanggan ke dalam 2D menggunakan PCA:
+- Jika dua titik berdekatan, artinya mereka memiliki karakteristik fitur yang mirip (misal pendapatan, keterlambatan, harga mobil).
+- Jika dua titik jauh, maka karakteristik mereka berbeda.
+- Pemisahan antar klaster menunjukkan bahwa PCA berhasil menangkap struktur dalam data.
+
+🔍 Kenapa PCA digunakan untuk visualisasi clustering?
+Karena:
+- Clustering biasanya dilakukan dalam ruang multidimensi (5 fitur atau lebih).
+- PCA memungkinkan kita memproyeksikan hasil clustering tersebut ke 2 dimensi, sehingga bisa divisualisasikan dan dibandingkan secara visual.
+
+🧠 Analogi Sederhana:
+Bayangkan Anda melihat bayangan objek 3D ke dinding:
+- Objek asli = data berdimensi tinggi.
+- Bayangan = representasi PCA 2D (PC1 dan PC2).
+- Anda tetap bisa melihat pola bentuk umum, meskipun informasi 3D-nya diringkas ke 2D.  
+
 
 🔗 Hubungan Keduanya
 ✅ PCA sangat sensitif terhadap skala data
