@@ -120,6 +120,40 @@ Gunakan StandardScaler jika:
 - Titik ❌ Tanpa Scaling cenderung mengelompok lebih jelas.
 - Titik ✅ Dengan Scaling lebih menyebar dan seimbang, tapi clusternya lebih tumpang tindih (ini biasa terjadi ketika variabel awal sangat berbeda skalanya).
 
+🧠 1. Apa itu PCA dan StandardScaler?
+| Komponen           | Fungsi                                                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| `StandardScaler()` | Menstandarisasi fitur: membuat **mean = 0** dan **standar deviasi = 1**                   |
+| `PCA`              | Mengubah data berdimensi tinggi → ke dimensi lebih rendah (dengan **maksimal informasi**) |
+
+🔗 Hubungan Keduanya
+✅ PCA sangat sensitif terhadap skala data
+PCA bekerja dengan mencari arah variansi terbesar (principal components). Jika fitur tidak distandarisasi:
+- Fitur dengan nilai besar (misalnya pendapatan dalam juta) akan dominan, walaupun tidak penting secara statistik.
+- Fitur dengan skala kecil (misalnya jumlah_kredit_aktif) akan terabaikan.
+
+🔍 Contoh Nyata
+Misalkan kamu punya fitur:
+- pendapatan (dalam juta)
+- jumlah_kredit_aktif (biasanya 0–5)
+
+🧪 Ilustrasi Performa
+| Metode                      | Hasil PCA                             |
+| --------------------------- | ------------------------------------- |
+| Tanpa StandardScaler → PCA  | Komponen utama didominasi fitur besar |
+| Dengan StandardScaler → PCA | Semua fitur berkontribusi secara adil |
+
+📌 Kesimpulan:
+🔁 Gunakan StandardScaler terlebih dahulu sebelum PCA
+- Membuat fitur setara dalam skala
+- Meningkatkan keakuratan dan interpretasi PCA
+
+Tanpa StandardScaler, PCA akan menganggap pendapatan jauh lebih penting, padahal itu hanya karena skala yang besar.  
+
+👉 Maka dari itu, StandardScaler digunakan sebelum PCA agar:
+- Semua fitur punya bobot setara
+- PCA bisa menangkap struktur variansi sebenarnya dari data
+
 🔎 Definisi: jumlah_kredit_aktif
 Jumlah fasilitas kredit yang masih berjalan (belum lunas) milik seorang pelanggan pada saat data diambil.
 
